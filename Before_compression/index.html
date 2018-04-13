@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="ru"> <!--<![endif]-->
+
+<head>
+
+	<meta charset="utf-8">
+
+	<title>Заголовок</title>
+	<meta name="description" content="">
+
+	<!-- 
+				Вынес стили для главного экаран, чтобы он быстрее грузился(для Google Page Speed)
+	-->
+	<style>
+		html,body{
+			font-size: 100%;
+			margin: 0;
+			padding: 0;
+		}
+		ul,li,a{
+			text-decoration: none;
+			list-style: none;
+			color: #fff;
+			margin: 0;
+			padding: 0;
+		}
+		header{
+			width: 100%;
+			height: 110px;
+			position: absolute;
+			display: flex;
+			justify-content: space-around;
+			align-items: center;
+		}
+		header h3{
+			font-family: "HelveticaNeue-Bold";
+			font-size: 1.25rem;
+			color: #69e44d;
+		}
+		.wrap_nav{
+			width: 380px;
+			height: 100%;
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		/* Иконка адаптивного меню НАЧАЛО */
+
+		.menu__icon {
+		    display: none;
+		    width: 45px;
+		    height: 35px;
+		    position: relative;
+		    cursor: pointer;
+		    z-index: 2;
+		    margin-right: 40px;
+		}
+
+		.menu__icon span {
+		    display: block;
+		    position: absolute;
+		    height: 9px;
+		    width: 100%;
+		    background: #fff;
+		    border-radius: 9px;
+		    opacity: 1;
+		    left: 0;
+		    transform: rotate(0deg);
+		    transition: .25s ease-in-out;
+		}
+
+		.menu__icon span:nth-child(1) {
+		    top: 0px;
+		}
+
+		.menu__icon span:nth-child(2), .menu__icon span:nth-child(3) {
+		    top: 13px;
+		}
+
+		.menu__icon span:nth-child(4) {
+		    top: 26px;
+		}
+		.menu_state_open span:nth-child(1) {
+		    top: 18px;
+		    width: 0%;
+		    left: 50%;
+		}
+		.menu_state_open span:nth-child(2) {
+		    transform: rotate(45deg);
+		}
+		.menu_state_open span:nth-child(3) {
+		    transform: rotate(-45deg);
+		}
+		.menu_state_open span:nth-child(4) {
+		    top: 18px;
+		    width: 0%;
+		    left: 50%;
+		}
+
+		/* Иконка адаптивного меню КОНЕЦ*/
+
+		.menu_mobile{
+			display: none;
+		}
+		.menu_open{
+			position: absolute;
+			display: block;
+			width: 100vw;
+			height: 100vh;
+			background-color: #000;
+			top: 0;
+			left: 0;
+			z-index: 1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		.wrap_menu_mobile{
+			height: 34vh;
+			display: flex;
+			text-align: center;
+			flex-direction: column;
+			align-items: center;
+		}
+		.wrap_menu_mobile li{
+			font-family: "Helvetica";
+			margin: 1.25em 0;
+			font-size: 2rem;
+		}
+		.wrap_menu_mobile li:last-child{
+			text-transform: uppercase;
+			font-size: 1.5rem;
+		}
+		.wrap_menu_mobile button{
+			color: #fff;
+			font-family: "Helvetica";
+			text-transform: uppercase;
+			font-size: 1.5rem;
+			background-color: transparent;
+			border: 1px solid #fff;
+			padding: 0.7em 1.43em;
+			border-radius: 0.5em;
+			cursor: pointer;
+		}
+		.menu{
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.menu ul{
+			width: 240px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.menu a{
+			font-family: "Helvetica";
+			font-size: 1rem;
+		}
+		.menu li:last-child a{
+			text-transform: uppercase;
+			font-size: 0.875rem;
+		}
+
+		.menu button{
+			color: #fff;
+			font-family: "Helvetica";
+			text-transform: uppercase;
+			font-size: 0.875rem;
+			background-color: transparent;
+			border: 1px solid #fff;
+			padding: 0.7em 1.43em;
+			border-radius: 0.5em;
+			cursor: pointer;
+		}
+
+		.menu button:hover{
+			color: #fff;
+			background-color: #22b737;
+			border-color: #22b737;
+		}
+
+		.main_screen{
+			color: #fff;
+			height: 100vh;
+			background-color: #121212;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+		.main_text h2{
+			font-family: "Helvetica";
+			margin: 0 0 0.6em 0;
+			font-size: 1.875rem;
+		}
+		.main_text h1{
+			font-family: "HelveticaBold";
+			margin: 0 0 0.4em 0;
+			font-size: 5.625rem;
+		}
+		.main_text button{
+			padding: 1.2em 3em;
+			border-radius: 0.38em;
+			font-size: 1.125rem;
+			background-color: #22b737;
+			border: none;
+			color: #fff;
+			font-family: "Helvetica";
+			cursor: pointer;
+		}
+		@media only screen and (max-width : 768px) {
+			header{
+				justify-content: flex-end;
+			}
+			header h3{
+				display: none;
+			}
+			.wrap_nav{
+				justify-content: flex-end;
+			}
+			.menu{
+				display: none;
+			}
+			.menu__icon{
+				display: inline-block;
+			}
+			.wrap_menu_mobile{
+				height: 40vh;
+			}
+		}
+		@media only screen and (max-width : 1400px) {
+			html,body{
+				font-size: 80%;
+			}
+		}
+		@media only screen and (max-width : 720px) {
+			html,body{
+				font-size: 75%;
+			}
+			.main_text h1{
+				font-size: 4rem;
+			}
+		}
+		@media only screen and (max-width : 480px) {
+			.main_text h2{
+				font-size: 2rem;
+			}
+			.main_text h1{
+				font-size: 4rem;
+			}
+			.main_text button{
+				font-size: 1.2rem;
+			}
+		}
+		@media only screen and (max-width : 410px) {
+			.main_text h1{
+				font-size: 3rem;
+			}
+		}
+		@media only screen and (max-width : 320px) {
+			.wrap_menu_mobile button{
+				font-size: 1rem;
+			}
+			.main_text h2{
+				font-size: 2rem;
+			}
+			.wrap_menu_mobile{
+				height: 400px;
+			}
+			.main_text h1{
+				font-size: 3rem;
+			}
+			.main_text button{
+				font-size: 1rem;
+			}
+		}
+	</style>
+
+	<!-- 
+				Проверка шритов пользователя. Eсли у пользователя нет шрифтов, которые используются на сайте, то шрифты подключаются и кэшируются, если
+				шрифты есть, то не подключаюся и используются пользовательские шрифты установленные у него в системе(для Google Page Speed)
+	-->
+	<script>!function(){function e(e,t,n){e.addEventListener?e.addEventListener(t,n,!1):e.attachEvent&&e.attachEvent("on"+t,n)}function t(e){return window.localStorage&&localStorage.font_css_cache&&localStorage.font_css_cache_file===e}function n(){if(window.localStorage&&window.XMLHttpRequest)if(t(o))a(localStorage.font_css_cache);else{var n=new XMLHttpRequest;n.open("GET",o,!0),e(n,"load",function(){4===n.readyState&&(a(n.responseText),localStorage.font_css_cache=n.responseText,localStorage.font_css_cache_file=o)}),n.send()}else{var c=document.createElement("link");c.href=o,c.rel="stylesheet",c.type="text/css",document.getElementsByTagName("head")[0].appendChild(c),document.cookie="font_css_cache"}}function a(e){var t=document.createElement("style");t.innerHTML=e,document.getElementsByTagName("head")[0].appendChild(t)}var o="_fonts.css";window.localStorage&&localStorage.font_css_cache||document.cookie.indexOf("font_css_cache")>-1?n():e(window,"load",n)}();</script>
+	
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+</head>
+
+<body>
+
+	<!-- Здесь написан код -->
+	<main>
+		<header>
+			<h3>Free Design</h3>
+			<div class="wrap_nav">
+				<div class="menu__icon">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				<div class="menu">
+					<nav>
+						<ul>
+							<li><a href="#">About</a></li>
+							<li><a href="#">Portfolio</a></li>
+							<li><a href="#">Login</a></li>
+						</ul>
+					</nav>
+					<button>Signup</button>
+				</div>
+				<div class="menu_mobile">
+					<div class="wrap_menu_mobile">
+						<nav>
+							<ul>
+								<li><a href="#" class="link_mobile">About</a></li>
+								<li><a href="#" class="link_mobile">Portfolio</a></li>
+								<li><a href="#" class="link_mobile">Login</a></li>
+							</ul>
+						</nav>
+						<button class="link_mobile">Signup</button>
+					</div>
+				</div>
+			</div>
+		</header>
+		<section class="main_screen">
+			<div class="main_text">
+				<h2>Thinking About</h2>
+				<h1>Freebie Design</h1>
+				<button>Get Started</button>
+			</div>
+		</section>
+		<section class="freebie">
+			<div class="freebie_text">
+				<section>
+					<h2>I think you will</h2>
+					<h1>like this Freebie</h1>
+				</section>
+				<section>
+					<p class="first_p">Agile venture capital thinker-maker-doer<br>bootstrapping fund integrate unicorn.<br>Earned media ship it piverate latte waterfall<br>is so 2000 and late</p>
+					<p class="last_p">Sticky note ship it minimum viable<br>product latte bootstrapping iterate</p>
+					<h4>Download Now</h4>
+					<div class="download">
+						<img src="img/google.png" alt="google">
+						<img src="img/apple.png" alt="apple">
+					</div>
+				</section>
+			</div>
+			<div class="freebie_iPhone">
+				<img src="img/iPhone.png" alt="iPhone">
+			</div>
+		</section>
+		<section class="get">
+			<div class="wrap_block_gray">
+				<div class="block_gray"></div>
+			</div>
+			<div class="text_get">
+				<div class="wrap_text_get">
+					<h2>Get your</h2>
+					<h1>Freebie Design</h1>
+					<p class="first_p">Agile venture capital thinker-maker-doer<br>bootstrapping fund integrate unicorn.<br>Earned media ship it piverate latte<br>waterfall is so 2000 and lat</p>
+					<p class="last_p">Sticky note ship it minimum viable</p>
+					<h4>Get Started</h4>
+				</div>
+			</div>
+		</section>
+		<section class="end">
+			<div class="freebie_iPhone">
+				<img src="img/iPhone2.png" alt="iPhone">
+			</div>
+			<div class="text_end">
+				<p class="first_p">Agile venture capital thinker-maker-doer<br>bootstrapping fund integrate unicorn.<br>Earned media ship it piverate latte waterfall<br>is so 2000 and late</p>
+				<p class="last_p">Sticky note ship it minimum viable<br>product latte bootstrapping iterate</p>
+				<h4>Download Now</h4>
+				<div class="download">
+					<img src="img/google.png" alt="google">
+					<img src="img/apple.png" alt="apple">
+				</div>
+			</div>
+		</section>
+		<footer>
+			<div class="wrap_footer">
+				<section class="about">
+					<h4>About us</h4>
+					<ul>
+						<li><a href="#">Loriam ipsom</a></li>
+						<li><a href="#">Dolor info</a></li>
+						<li><a href="#">Specialozation mask</a></li>
+						<li><a href="#">Combine with</a></li>
+					</ul>
+				</section>
+				<section class="process">
+					<h4>Process</h4>
+					<ul>
+						<li><a href="#">Loriam ipsom</a></li>
+						<li><a href="#">Dolor info</a></li>
+						<li><a href="#">Specialozation mask</a></li>
+						<li><a href="#">Combine with</a></li>
+						<li><a href="#">Loriam ipsom</a></li>
+						<li><a href="#">Dolor information</a></li>
+					</ul>
+				</section>
+				<section class="links">
+					<h4>Quick Links</h4>
+					<ul>
+						<li><a href="#">Home page</a></li>
+						<li><a href="#">Why Choose Trave</a></li>
+						<li><a href="#">How it works</a></li>
+						<li><a href="#">Contact us</a></li>
+					</ul>
+				</section>
+				<section class="information">
+					<div class="wrap_text_info">
+						<h4>Contact Information</h4>
+						<p>Loriam ipsom dolor information is in here<br>so it is most importent</p>
+						<a href="#">helpline@gmain.com</a>
+						<div class="wrap_icons">
+							<ul>
+								<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+								<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+							</ul>
+						</div>
+					</div>
+				</section>
+			</div>
+		</footer>
+	</main>
+
+	<!-- 
+				Этот скрипт откладывает загрузку стилей(для Google Page Speed)
+	-->
+	<script>
+		var css = new Array('_main.css');
+		var css = new Array('_media.css');
+		var css = new Array('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+		function downloadJSAtOnload() {
+			var element;
+			for(var i = 0; i < css.length; i++){
+				element = document.createElement("link");
+				element.href = css[i];
+				element.type = 'text/css';
+				element.rel = 'stylesheet';
+				document.body.appendChild(element);
+			}
+		}
+		if (window.addEventListener)
+			window.addEventListener("load", downloadJSAtOnload, false);
+		else if (window.attachEvent)
+			window.attachEvent("onload", downloadJSAtOnload);
+		else window.onload = downloadJSAtOnload; 
+
+		function loadCSS(hf) {
+			var ms=document.createElement("link");ms.rel="stylesheet";
+			ms.href=hf;document.getElementsByTagName("head")[0].appendChild(ms);
+		}
+		loadCSS("_main.css");
+		loadCSS("_media.css");
+		loadCSS("https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+	</script>
+
+	<!--[if lt IE 9]>
+	<script src="libs/html5shiv/es5-shim.min.js"></script>
+	<script src="libs/html5shiv/html5shiv.min.js"></script>
+	<script src="libs/html5shiv/html5shiv-printshiv.min.js"></script>
+	<script src="libs/respond/respond.min.js"></script>
+	<![endif]-->
+
+
+	<!-- 
+				Этот скрипт откладывает загрузку JS файлов(для Google Page Speed)
+	-->
+	<script>var scr = {"scripts":[
+		{"src" : "https://code.jquery.com/jquery-3.3.1.min.js", "async" : false},
+		{"src" : "js/common.js", "async" : false}
+		]};!function(t,n,r){"use strict";var c=function(t){if("[object Array]"!==Object.prototype.toString.call(t))return!1;for(var r=0;r<t.length;r++){var c=n.createElement("script"),e=t[r];c.src=e.src,c.async=e.async,n.body.appendChild(c)}return!0};t.addEventListener?t.addEventListener("load",function(){c(r.scripts);},!1):t.attachEvent?t.attachEvent("onload",function(){c(r.scripts)}):t.onload=function(){c(r.scripts)}}(window,document,scr);
+	</script>
+
+</body>
+</html>

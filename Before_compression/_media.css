@@ -1,0 +1,134 @@
+
+/* Custom */
+
+@media only screen and (max-width : 1400px) {
+	.wrap_footer{
+		width: 80vw;
+	}
+}
+@media only screen and (max-width : 1000px) {
+	.freebie_iPhone{
+		margin: 0 0 0 4em;
+	}
+}
+@media only screen and (max-width : 768px) {
+	.freebie{
+		height: 550px;
+	}
+	.freebie_iPhone {
+		width: 18rem;
+		height: 36rem;
+		margin: 0 0 0 2em;
+	}
+
+	.wrap_block_gray{
+		height: 100%;
+		width: 130%;
+	}
+	.text_get{
+		margin: 0 0 0 4em;
+	}
+	.freebie_text section h1, .text_get h1{
+		font-size: 3rem;
+	}
+}
+
+@media only screen and (max-width : 720px) {
+	.freebie{
+		flex-direction: column-reverse;
+		height: 950px;
+	}
+	.freebie_text{
+		margin: 50px 0 50px 0;
+	}
+	.get{
+		flex-direction: column;
+		height: 800px;
+	}
+	.block_gray {
+		height: 400px;
+	}
+	.text_get{
+		margin: 0;
+		justify-content: center;
+	}
+	.end{
+		flex-direction: column;
+		height: 800px;
+	}
+	.text_end{
+		margin: 50px 0 0 0;
+	}
+	.wrap_footer{
+		width: 90vw;
+	}
+}
+@media only screen and (max-width : 480px) {
+	.freebie{
+		flex-direction: column-reverse;
+		height: 950px;
+	}
+	.freebie_text{
+		margin: 0;
+	}
+	.freebie_text section:last-child{
+		right: 0;
+	}
+	.freebie_iPhone{
+		margin: 0 0 20px 0;
+	}
+	.get{
+		flex-direction: column;
+		height: 800px;
+	}
+	.wrap_block_gray{
+		width: 100%;
+		height: 400px;
+	}
+	.text_get{
+		width: auto;
+		height: auto;
+		margin: 40px 0 0 0;
+	}
+	.end{
+		flex-direction: column;
+		height: 800px;
+	}
+	.text_end{
+		margin: 40px 0 0 0;
+	}
+	.wrap_footer{
+		width: 90vw;
+		flex-wrap: wrap;
+	}
+	.information{
+		width: 100%;
+		display: flex;
+		justify-content: center;
+	}
+	.wrap_text_info{
+		text-align: center;
+	}
+	.wrap_icons ul{
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		margin: 1em 0;
+	}
+	.wrap_icons ul li a{
+		font-size: 2rem;
+	}
+}
+@media only screen and (max-width : 320px) {
+	.links{
+		width: 100%;
+		text-align: center;
+	}
+	.download{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+}
+
+/* End Custom */
