@@ -22,13 +22,13 @@
 	position: relative;
 	right: -85px;
 }
-.freebie_text section h2, .text_get h2{
+.freebie_text section h1, .text_get h1{
 	font-family: "HelveticaBold";
 	color: #4a4a4a;
 	font-size: 1.875rem;
 	margin: 0 0 0.8em 0;
 }
-.freebie_text section h1, .text_get h1{
+.freebie_text section h2, .text_get h2{
 	margin: 0 0 1.23em 0;
 	font-family: "HelveticaLight";
 	color: #69e44d;
